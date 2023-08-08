@@ -18,6 +18,8 @@ class TicTacToeScreenController extends GetxController {
 
     player1Score.value = int.parse( PreferenceHelper.getValue(key: "p1Score") ?? "0") ;
     player2Score.value = int.parse(PreferenceHelper.getValue(key: "p2Score") ?? "0");
+    totalBoxFixed.value = int.parse(PreferenceHelper.getValue(key: "totalBoxFixed") ?? "0");
+    player1Turn.value = (PreferenceHelper.getValue(key: "turn") == null  || (PreferenceHelper.getValue(key: "turn") == 'true')) ? true : false ;
 
     final String cellValueString =  PreferenceHelper.getValue(key: "gameStatus") ?? "";
 
@@ -135,6 +137,8 @@ class TicTacToeScreenController extends GetxController {
     final String cellValueSting = json.encode(cellsValue);
 
     await PreferenceHelper.setValue(key: "gameStatus", value: cellValueSting);
+    await PreferenceHelper.setValue(key: "turn", value: player1Turn.value.toString());
+    await PreferenceHelper.setValue(key: "totalBoxFixed", value: totalBoxFixed.value.toString());
 
 
   }

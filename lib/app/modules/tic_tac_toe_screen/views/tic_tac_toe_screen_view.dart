@@ -52,29 +52,33 @@ class TicTacToeScreenView extends GetView<TicTacToeScreenController> {
   Widget _board() {
     return Expanded(
       flex: 4,
-      child: GridView.builder(
-        padding: EdgeInsets.zero,
-          itemCount: 9,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3),
-          itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-              onTap: () {
-                controller.onTurn(index, winnerDialog,drawDialog);
-              },
-              child: Container(
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.black)),
-                child: Center(
-                  child: Obx(() => Text(
-                    controller.cellsValue[index],
-                    style:
-                    const TextStyle( fontSize: 35),
-                  )),
+      child: Padding(
+
+        padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+        child: GridView.builder(
+          padding: EdgeInsets.zero,
+            itemCount: 9,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3),
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {
+                  controller.onTurn(index, winnerDialog,drawDialog);
+                },
+                child: Container(
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.black)),
+                  child: Center(
+                    child: Obx(() => Text(
+                      controller.cellsValue[index],
+                      style:
+                      const TextStyle( fontSize: 35),
+                    )),
+                  ),
                 ),
-              ),
-            );
-          }),
+              );
+            }),
+      ),
     );
   }
 
