@@ -14,27 +14,32 @@ class HomeView extends GetView<HomeController> {
     width = MediaQuery.of(context).size.width;
     return Scaffold(
 
-      body:  SizedBox(
-        width: width,
-        height: height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+      body:  _body(),
+    );
+  }
 
-            const Text("TIC TOC TOE", style: TextStyle(fontSize: 40),),
+  /// Body
+  Widget _body() {
+    return SizedBox(
+      width: width,
+      height: height,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
 
-            SizedBox(height: height * 0.05,),
+          const Text("TIC TOC TOE", style: TextStyle(fontSize: 40),),
 
-            MaterialButton(
-                onPressed: controller.navigateToGame,
-                child: const Text("PLAY GAME"),
-                color: Colors.black,
-                textColor: Colors.white,
-            )
+          SizedBox(height: height * 0.05,),
 
-          ],
-        ),
+          MaterialButton(
+              onPressed: controller.navigateToGame,
+              color: Colors.black,
+              textColor: Colors.white,
+              child: const Text("PLAY GAME"),
+          )
+
+        ],
       ),
     );
   }

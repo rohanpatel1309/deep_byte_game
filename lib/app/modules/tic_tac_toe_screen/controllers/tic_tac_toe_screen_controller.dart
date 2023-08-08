@@ -33,7 +33,7 @@ class TicTacToeScreenController extends GetxController {
   }
 
 
-  // Player turn cell filled
+  /// Player turn cell filled
   void onTurn(int index, Function winnerDialog, Function drawDialog) async{
     
       if (player1Turn.value && cellsValue[index] == '') {
@@ -50,7 +50,7 @@ class TicTacToeScreenController extends GetxController {
       await setValueInStorage();
   }
 
-  // Check winner
+  /// Check winner
   void checkWinner(Function winnerDialog, Function drawDialog) {
 
     // Column
@@ -97,12 +97,12 @@ class TicTacToeScreenController extends GetxController {
         cellsValue[2] == cellsValue[6] &&
         cellsValue[2] != '') {
       winnerDialog(cellsValue[2]);
-    } else if (totalBoxFixed == 9) {
+    } else if (totalBoxFixed.value == 9) {
       drawDialog();
     }
   }
 
-  // Clear board
+  /// Clear board
   void clearBoard() {
       for (int i = 0; i < 9; i++) {
         cellsValue[i] = '';
@@ -114,7 +114,7 @@ class TicTacToeScreenController extends GetxController {
 
   }
 
-  // Clear scoreboard
+  /// Clear scoreboard
   void clearScoreBoard() {
 
       player2Score.value = 0;
@@ -127,7 +127,7 @@ class TicTacToeScreenController extends GetxController {
       setValueInStorage();
   }
 
-  // Set value in local storage
+  /// Set value in local storage
   Future<void> setValueInStorage() async{
     await PreferenceHelper.setValue(key: "p1Score", value: player1Score.value.toString());
     await PreferenceHelper.setValue(key: "p2Score", value: player2Score.value.toString());

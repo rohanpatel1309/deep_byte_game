@@ -19,7 +19,7 @@ class TicTacToeScreenView extends GetView<TicTacToeScreenController> {
     return SizedBox(
       height: height,
       width: width,
-      child: ListView(
+      child: Column(
         children: <Widget>[
 
           /// Players score widget
@@ -50,9 +50,10 @@ class TicTacToeScreenView extends GetView<TicTacToeScreenController> {
 
   /// Board
   Widget _board() {
-    return SizedBox(
-      height: height * 0.5,
+    return Expanded(
+      flex: 4,
       child: GridView.builder(
+        padding: EdgeInsets.zero,
           itemCount: 9,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3),
